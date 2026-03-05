@@ -1,0 +1,5 @@
+Estimated Threshold: 0.46 °C
+STD Threshold: 0.04 °C
+Estimated Slope: 0.111
+Estimated Lapse Rate: 0.043
+Total Trials: 30
