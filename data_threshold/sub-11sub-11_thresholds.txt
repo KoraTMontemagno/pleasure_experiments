@@ -1,0 +1,5 @@
+Estimated Threshold: 0.43
+STD Threshold: 0.22
+Estimated Slope: 0.511
+Estimated Lapse Rate: 0.049
+Total Trials: 3

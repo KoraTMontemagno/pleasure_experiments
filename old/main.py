@@ -1,13 +1,14 @@
 import numpy as np
-import PsiMarginal
+import pleasure_experiments.old.PsiMarginal as PsiMarginal
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 from psychopy import core, event, monitors, visual  
-from psychopy_fun import psycho_stuff
+from pleasure_experiments.old.psychopy_fun import psycho_stuff
 from psychopy.hardware import keyboard
 import pandas as pd
-from repeat_vibration import scan_for_devices, vibrate_device, go_vibrate
+from pleasure_experiments.old.repeat_vibration import scan_for_devices, vibrate_device, go_vibrate
 import asyncio
+import pandas as pd
 
 subject_df = pd.read_csv("subject_data.csv", sep=";")
 subject = subject_df["participant_id"].iloc[0]
@@ -34,7 +35,7 @@ max_vibr = 1
 
 ### PSIMARGINAL SETUP ###
 mu = np.linspace(min_vibr, max_vibr, 50) # limits of the mu
-sigma = np.linspace(0.001, 6, 100) # limits of slope
+sigma = np.linspace(0.001, 1, 100) # limits of slope
 x = np.arange(min_vibr, max_vibr, 0.05)  # stimulus values in 1/20 percentage increases
 lapse = np.linspace(0, 0.1, 15)
 guessRate = 0.05
@@ -61,7 +62,7 @@ ready_text = visual.TextStim(
     win,
     text="You will receive some vibration stimuli. After each stimulus you will be asked whether it was pleasurable or not - use your left and right arrow on the keyboard to answer.\n Are you ready?\n\nPress SPACE or ENTER to start.",
     color='white',
-    height=50,
+    height=60,
     wrapWidth=1000,
     font= "Times New roman"
 )
@@ -181,7 +182,6 @@ for i in range(ntrials):
     threshold_high = [a_i + 2*b_i for a_i, b_i in zip(thresholds, threshold_uncertainty)]
 
     ### Save trials
-    import pandas as pd
 
     df_trials = pd.DataFrame({
         'Trial': trials,

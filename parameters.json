@@ -1,0 +1,11 @@
+{   
+    "ntrials": 3,
+    "habituation": 2,
+    "repeat": 24,
+    "block_size": 24,
+
+    "duration": 2.5,
+    "jitter_response": 2,
+    "jitter_wait": 2,
+    "max_ISI": 15
+}
