@@ -37,7 +37,6 @@ import scipy
 from scipy.stats import norm, beta, gamma
 from scipy.special import erfc
 import threading
-import matplotlib.pyplot as plt
 
 
 def pf(parameters, psyfun='cGauss'):
@@ -495,6 +494,18 @@ class Psi:
         self.xCurrent = self.stimRange[idx]
 
         return self.xCurrent
+
+    def skipData(self, nextIntensity):
+        """Retarget the next stimulus without treating this response as Psi data.
+
+        The posterior and its per-stimulus entropy values remain unchanged.
+        Updating the selected stimulus index ensures the next accepted response
+        is applied to the posterior for the intensity that was actually shown.
+        """
+        if self.xCurrent is None:
+            raise RuntimeError("Cannot skip a trial while Psi is calculating a stimulus.")
+        return self.forceStimulus(nextIntensity)
+
     def plot(self, muRef=None, sigmaRef=None, lapseRef=None, guessRef=None, save=False):
         """
         Plot marginal distribution of mu, sigma, lapse and posterior distribution of psychometric curve.
@@ -522,6 +533,7 @@ class Psi:
                     True : save figure
                     False: don't save figure
         """
+        import matplotlib.pyplot as plt
 
         if all((muRef, sigmaRef, lapseRef)):
             ref = True  # reference values exist

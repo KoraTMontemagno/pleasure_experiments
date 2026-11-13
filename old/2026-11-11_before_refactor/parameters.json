@@ -1,0 +1,27 @@
+{   
+    "ntrials": 3,
+    "repeat": 24,
+    "block_size": 24,
+
+    "duration": 0.5,
+    "jitter_response": 0.5,
+    "jitter_wait": 0.5,
+    "max_ISI": 15,
+
+    "habituation": 2,
+
+    "pleasure_pipeline": {
+        "annoyance_ntrials": 3,
+        "pleasure_ntrials": 3,
+        "minimum_intensity": 0.05,
+        "maximum_intensity": 1.0,
+        "intensity_step": 0.05,
+        "validation_adjustment_step": 0.1,
+        "automatic_mode": true,
+        "practice": true,
+        "language": "it",
+        "safety_margin_sd": 1.0,
+        "final_trials_per_intensity": 2,
+        "final_break_interval": 10
+    }
+}
